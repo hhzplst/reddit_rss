@@ -1,7 +1,7 @@
-<h2><%= @title %></h2>
+<h2><%= @title %></h2> 
 
 <% @feeds.each do |feed| %>
 <div>
-  <p>Headline: <%= feed.title %></p>
+  <p>Headline: <%= feed.title %> &nbsp;&nbsp; <%= link_to "Heart This", fav_path(:entry_title => feed.title) %></p>
 </div>
 <% end %>

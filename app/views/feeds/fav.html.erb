@@ -1,0 +1,9 @@
+<h2>All Hearted Feeds</h2> 
+
+<h2><%= link_to "Back to All Feeds", root_path%></h2> 
+
+<% @favFeeds.each do |favFeed| %>
+<div>
+  <p>Headline: <%= favFeed %></p>
+</div>
+<% end %>
