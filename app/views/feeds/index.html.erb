@@ -1,0 +1,7 @@
+<h2><%= @title %></h2>
+
+<% @feeds.each do |feed| %>
+<div>
+  <p>Headline: <%= feed.title %></p>
+</div>
+<% end %>
