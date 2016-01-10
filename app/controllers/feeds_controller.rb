@@ -16,11 +16,14 @@ class FeedsController < ApplicationController
   end
 
   def fav
-    current_feed = Feed.find_by_id params[:entry]
-    if !@current_user.feeds.index current_feed
-      @current_user.feeds << current_feed
+    if @current_user
+      current_feed = Feed.find_by_id params[:entry]
+      if !@current_user.feeds.index current_feed
+        @current_user.feeds << current_feed
+      end
+      redirect_to fav_path
+    else redirect_to login_path
     end
-    redirect_to fav_path
   end
 
   def all_fav
