@@ -1,8 +1,8 @@
 <div class="col-md-8 col-md-offset-2">
-  <h1><%= @title %></h1> 
+  <h1><%= @title %></h1><br> 
   <% @feeds.each do |feed| %>
   <div class="jumbotron" id="feeds">
-    <p><%= feed.title %> &nbsp;&nbsp; <i class="fa fa-heart-o"></i></p>
+    <p><%= feed.title %>&nbsp; </p><p class="pull-right"><%= link_to "Heart This", fav_path(:entry => feed.id), :method => :post %></p>
   </div>
   <% end %>
 </div>

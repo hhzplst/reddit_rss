@@ -1,19 +1,29 @@
 class FeedsController < ApplicationController
-  $favFeeds = Array.new
+  before_action :current_user
+
   def index
     url = "https://www.reddit.com/.rss"
     feed = Feedjira::Feed.fetch_and_parse url
+    feed.entries.each do |feed|
+      if !Feed.find_by title: feed.title
+        Feed.create title: feed.title;
+      end
+    end
 
     @title = feed.title
-    @feeds = feed.entries
+    @feeds = Feed.all
 
-    @feeds.each do |feed|
-      Feed.create title: feed.title;
-    end
   end
 
   def fav
-    @favFeeds = $favFeeds.push params[:entry_title]
-    @favFeeds = @favFeeds.uniq 
+    current_feed = Feed.find_by_id params[:entry]
+    if !@current_user.feeds.index current_feed
+      @current_user.feeds << current_feed
+    end
+    redirect_to fav_path
+  end
+
+  def all_fav
+    @favFeeds = @current_user.feeds
   end
 end

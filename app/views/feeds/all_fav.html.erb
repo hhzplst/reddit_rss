@@ -1,0 +1,9 @@
+<div class="col-md-8 col-md-offset-2">
+<h2>All Hearted Feeds</h2><br>
+<% @favFeeds.each do |favFeed| %>
+<div>
+  <p><%= favFeed.title %></p>
+</div>
+<% end %><br><br>
+<h4><%= link_to "<- Back to All Feeds", home_path%></h4> 
+</div>

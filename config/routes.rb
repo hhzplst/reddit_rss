@@ -12,4 +12,8 @@ Rails.application.routes.draw do
 
   delete '/logout', to: "users#logout", as:"logout"
 
+  post '/fav', to: "feeds#fav"
+
+  get '/fav', to: "feeds#all_fav"
+
 end
